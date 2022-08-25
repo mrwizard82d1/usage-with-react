@@ -1,6 +1,6 @@
 import React from 'react';
 import { useMachine } from '@xstate/react';
-import toggleMachine, { CounterEvents, CounterStates } from '../machines/ToggleMachine';
+import toggleMachine, { CounterStates } from '../machines/ToggleMachine';
 
 function Local() {
     const [current, send] = useMachine(toggleMachine);
