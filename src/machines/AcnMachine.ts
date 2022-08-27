@@ -2,6 +2,7 @@ import { createMachine } from 'xstate';
 
 export const acnMachine = createMachine(
     {
+        predictableActionArguments: true,
         schema : {
             // The context (extended state) of the machine
             context: {},
@@ -12,8 +13,12 @@ export const acnMachine = createMachine(
         initial: 'loggedOut',
         context: {},
         states: {
-            loggedOut: {},
-            loggedIn: {},
+            loggedOut: {
+                on: { 'LOG_IN': 'loggedIn' }
+            },
+            loggedIn: {
+                on: { 'LOG_OUT': 'loggedOut'}
+            },
         },
     }
 );

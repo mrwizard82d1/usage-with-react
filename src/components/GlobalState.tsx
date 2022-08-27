@@ -1,7 +1,7 @@
 import { createContext, ReactElement } from 'react';
+import {InterpreterFrom} from "xstate";
 import { useInterpret } from '@xstate/react';
 import { acnMachine } from '../machines/AcnMachine';
-import {InterpreterFrom} from "xstate";
 
 export const GlobalStateContext = createContext({ acnService: {} as InterpreterFrom<typeof acnMachine> });
 
