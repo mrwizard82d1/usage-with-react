@@ -18,6 +18,14 @@ export const SomeComponent = (_props: {}) => {
             }>
                 Log In
             </button>
+            <button onClick={() => {
+                const nextState = globalServices.acnService.send('LOG_OUT')
+                console.log(nextState);
+                return nextState;
+            }
+            }>
+                Log Out
+            </button>
         </>
     )
 }
