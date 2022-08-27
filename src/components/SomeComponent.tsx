@@ -8,6 +8,10 @@ const loggedInSelector = (state: StateFrom<typeof acnMachine>) => {
     return state.matches('loggedIn');
 }
 
+const loggedInStatusText = (isLoggedIn: boolean) => isLoggedIn ? 'Logged In' : 'Logged Out';
+
+const loggedInButtonText = (isLoggedIn: boolean) => isLoggedIn ? 'Log Out' : 'Log In';
+
 const makeSender = (interpreter: InterpreterFrom<typeof acnMachine>, isLoggedIn: boolean) => {
     return () => interpreter.send({ type: isLoggedIn ? 'LOG_OUT' : 'LOG_IN' } as EventFrom<typeof acnMachine>);
 }
@@ -19,9 +23,9 @@ export const SomeComponent = (_props: {}) => {
 
     return (
         <>
-            <p>{isLoggedIn ? 'Logged In' : 'Logged Out'}</p>
+            <p>{loggedInStatusText(isLoggedIn )}</p>
             <button onClick={makeSender(globalServices.acnService, isLoggedIn)}>
-                {isLoggedIn ? 'Log Out' : 'Log In'}
+                {loggedInButtonText(isLoggedIn )}
             </button>
         </>
     )
