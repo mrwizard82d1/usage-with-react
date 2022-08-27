@@ -9,7 +9,11 @@ const loggedInSelector = (state: StateFrom<typeof acnMachine>) => {
     return state.matches('loggedIn');
 }
 
-const loggedInText = (truthyText: string, falsyText: string) => F.ifElse(F.identity<boolean>,
+// WebStorm thinks that the expression `F.identity<boolean>` is **not** an expression and flags it; however, the
+// TypeScript compiler compiles this module with no errors.
+//
+// To make WebStorm "happy," I introduced a type assertion.
+const loggedInText = (truthyText: string, falsyText: string) => F.ifElse(F.identity as (a: boolean) => boolean,
                                                                          F.always(truthyText),
                                                                          F.always(falsyText));
 
