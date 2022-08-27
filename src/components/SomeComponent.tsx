@@ -16,20 +16,10 @@ export const SomeComponent = (_props: {}) => {
     return (
         <>
             <p>{isLoggedIn ? 'Logged In' : 'Logged Out'}</p>
-            <button onClick={() => {
-                const nextState = globalServices.acnService.send('LOG_IN')
-                console.log(nextState);
-                return nextState;
-            }
-            }>
+            <button onClick={() => globalServices.acnService.send('LOG_IN')}>
                 Log In
             </button>
-            <button onClick={() => {
-                const nextState = globalServices.acnService.send('LOG_OUT')
-                console.log(nextState);
-                return nextState;
-            }
-            }>
+            <button onClick={() => globalServices.acnService.send('LOG_OUT')}>
                 Log Out
             </button>
         </>
