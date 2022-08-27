@@ -7,9 +7,18 @@ export const SomeComponent = (_props: {}) => {
     const globalServices = useContext(GlobalStateContext);
     const [state] = useActor(globalServices.acnService);
 
+    console.log('In SomeComponent()');
+
+    const renderState = (theState: typeof state) => {
+        console.log(`InSomeComponent: state.matches("loggedIn")=${state.matches("loggedIn")}`);
+        const result = theState.matches('loggedIn)') ? 'Logged In' : 'Logged Out';
+        console.log(`InSomeComponent.renderState returns ${result}`);
+        return result;
+    }
+
     return (
         <>
-            <p>{state.matches('loggedIn)') ? 'Logged In' : 'Logged Out'}</p>
+            <p>{ renderState(state) }</p>
             <button onClick={() => {
                 const nextState = globalServices.acnService.send('LOG_IN')
                 console.log(nextState);
