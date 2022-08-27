@@ -21,10 +21,14 @@ export const SomeComponent = (_props: {}) => {
     return (
         <>
             <p>{isLoggedIn ? 'Logged In' : 'Logged Out'}</p>
-            <button onClick={makeSender(globalServices.acnService, 'LOG_IN' )}>
+            <button
+                disabled={isLoggedIn}
+                onClick={makeSender(globalServices.acnService, 'LOG_IN' )}>
                 Log In
             </button>
-            <button onClick={makeSender(globalServices.acnService, 'LOG_OUT' )}>
+            <button
+                disabled={!isLoggedIn}
+                onClick={makeSender(globalServices.acnService, 'LOG_OUT' )}>
                 Log Out
             </button>
         </>
