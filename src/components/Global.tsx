@@ -1,7 +1,13 @@
+import {GlobalStateProvider} from "./GlobalState";
+import {SomeComponent} from "./SomeComponent";
+
 function Global() {
     return (
         <section>
-            <h1>Global State and React Context</h1>
+            <GlobalStateProvider>
+                <h1>Global State and React Context</h1>
+                <SomeComponent />
+            </GlobalStateProvider>
         </section>
     )
 }
