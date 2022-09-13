@@ -1,7 +1,8 @@
+import { F } from '@mobily/ts-belt';
 import {useContext} from 'react';
+import { Button, Stack, Typography } from '@mui/material';
 import {EventFrom, InterpreterFrom, StateFrom} from "xstate";
 import {useSelector} from '@xstate/react';
-import { F } from '@mobily/ts-belt';
 import {GlobalStateContext} from "./GlobalState";
 import {acnMachine} from "../machines/AcnMachine";
 
@@ -30,11 +31,16 @@ export const SomeComponent = (_props: {}) => {
     const isLoggedIn = useSelector(globalServices.acnService, loggedInSelector);
 
     return (
-        <>
-            <p>{loggedInStatusText(isLoggedIn )}</p>
-            <button onClick={makeSender(globalServices.acnService, isLoggedIn)}>
+        <Stack spacing={2}
+               direction="row">
+            <Typography variant="body1" component="p">
+                {loggedInStatusText(isLoggedIn )}
+            </Typography>
+            <Button variant="outlined"
+                    size="small"
+                    onClick={makeSender(globalServices.acnService, isLoggedIn)}>
                 {loggedInButtonText(isLoggedIn )}
-            </button>
-        </>
+            </Button>
+        </Stack>
     )
 }

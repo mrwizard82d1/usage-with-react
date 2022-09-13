@@ -1,3 +1,5 @@
+import {Stack, Typography} from '@mui/material';
+
 import {GlobalStateProvider} from "./GlobalState";
 import {SomeComponent} from "./SomeComponent";
 
@@ -9,8 +11,6 @@ function Global() {
              tag to a child element even though it is not really needed.
              */}
             <GlobalStateProvider>
-                <h1>Global State and React Context</h1>
-                <SomeComponent />
                 {/**
                  I tried to move the `button` components in `SomeComponent` here to eliminate the "hack" mentioned
                  in the _children_ comment.
@@ -22,6 +22,16 @@ function Global() {
 
                  I do not understand this behavior, but I plan to move on for now.
                  */}
+                {[
+                    <Stack>
+                        <Typography variant="h3"
+                                    component="h1"
+                                    marginBottom={5}>
+                            Global State and React Context
+                        </Typography>
+                        <SomeComponent/>
+                    </Stack>
+                ]}
             </GlobalStateProvider>
         </section>
     )

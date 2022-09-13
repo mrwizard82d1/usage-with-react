@@ -1,8 +1,18 @@
+import { Stack, Typography } from '@mui/material';
+
 function Other() {
     return (
-        <section>
-            <h1>Other Hooks</h1>
-        </section>
+        <Stack>
+            <Typography variant="h3"
+                        component="h1"
+                        marginBottom={5}>
+                Other Hooks
+            </Typography>
+            <Typography variant="body1"
+                        component="p">
+                TBD
+            </Typography>
+        </Stack>
     )
 }
 
